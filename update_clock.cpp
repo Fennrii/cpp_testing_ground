@@ -1,31 +1,31 @@
-#include <iostream>
 #include <chrono>
+#include <iostream>
 #include <thread>
-
 // Update routine function
-void update(double deltaTime){
-    // Game logic would go here
-    std::cout << "Updating with deltaTime: " << deltaTime << " seconds\n";
+void update(double deltaTime) {
+  // Game logic would go here
+  std::cout << "Updating with deltaTime: " << deltaTime << " seconds\n";
 }
 
-int main(){
-    using clock = std::chrono::steady_clock;
+int main() {
+  using clock = std::chrono::steady_clock;
 
-    auto previousTime = clock::now();
-    while(true){
-        auto currentTime = clock::now();
-        
-        // calculate elapsed time in seconds
-        std::chrono::duration<double> elapsed = currentTime - previousTime;
+  auto previousTime = clock::now();
+  while (true) {
+    auto currentTime = clock::now();
 
-        double deltaTime = elapsed.count();
+    // calculate elapsed time in seconds
+    std::chrono::duration<double> elapsed = currentTime - previousTime;
 
-        previousTime = currentTime;
+    double deltaTime = elapsed.count();
 
-        // call update function
-        update(deltaTime);
+    previousTime = currentTime;
 
-        // sleep function to limit cpu use 
-        std::this_thread::sleep_for(std::chrono::milliseconds(16)); // 60 FPS
-    }
+    // call update function
+    update(deltaTime);
+
+    // sleep function to limit cpu use
+    std::this_thread::sleep_for(std::chrono::milliseconds(16)); // 60 FPS
+  }
 }
+
