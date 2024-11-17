@@ -1,2 +1,2 @@
 build:
-	g++ update_clock.cpp
+	g++ update_clock.cpp mymath.cpp
