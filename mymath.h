@@ -8,6 +8,7 @@ namespace N {
   class Mymath {
     public:
       void do_something();
+      int factorial(int num);
       double power(double num, double exponent);
       double natlog(double num);
       double logx(double num, double exponent);

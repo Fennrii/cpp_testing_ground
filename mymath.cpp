@@ -4,11 +4,26 @@
 
 using namespace N;
 
-// TODO: Rewrite this into a math class instead of seperate functions
 
 
 void Mymath::do_something(){
   std::cout << "Testing\n"; 
+}
+int Mymath::factorial(int num){
+  /*
+   * if num = 0, return 1
+   * if num > 0, return num*factorial(num-1)
+   */
+
+  if (num < 0){
+    throw std::invalid_argument("Cannot get a factorial of a negative number");
+  }
+  if (num == 0){
+    return 1;
+  }
+  else{
+    return num*factorial(num-1);
+  }
 }
 
 double Mymath::power(double num, double exponent){
@@ -16,6 +31,12 @@ double Mymath::power(double num, double exponent){
    * Uses the repeated squaring to get the power working 
    * if odd exponent then exp = (exp - 1)/2
    * if even then exp = exp / 2
+   *
+   * Another way to get power is by using log rules
+   * Use this for decimal exponents
+   * a^x == b <-> xln(a) == ln(b) <-> e^(xln(a)) == b
+   *
+   * Then with i = 0 to inf use e^n = (n^i_1)/i_1! + (n^i_2)/i_2! + (n^i_3)/i_3! + ...
    */
   int exp;
   if ( (int) exponent == exponent ){
